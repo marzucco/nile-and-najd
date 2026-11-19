@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nile & Najd | النيل ونجد - Egyptian Creator Season 2</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display (English) + Cairo & Tajawal (Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        arabic: ['"Cairo"', '"Tajawal"', 'sans-serif'],
+                    },
+                    colors: {
+                        nile: {
+                            50: '#f0f7fa',
+                            100: '#daecf4',
+                            600: '#166088',
+                            700: '#114b6b',
+                            800: '#0d3b54',
+                            900: '#082738',
+                            950: '#051924',
+                        },
+                        najd: {
+                            50: '#fbf8f1',
+                            100: '#f5eedc',
+                            300: '#e4c28b',
+                            400: '#d4a359',
+                            500: '#c58f3d',
+                            600: '#a6722a',
+                        },
+                        oasis: {
+                            600: '#157f5c',
+                            700: '#11664a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Dynamic Typography based on Document Direction */
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+        }
+        html[dir="rtl"] .font-serif {
+            font-family: 'Cairo', sans-serif !important;
+        }
+        html[dir="ltr"] body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Subtle Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Glassmorphism Header */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Active Explorer Tab */
+        .tab-active {
+            border-bottom: 3px solid #c58f3d;
+            color: #0d3b54;
+            font-weight: 700;
+            background-color: rgba(245, 238, 220, 0.5);
+        }
+
+        /* Custom Scrollbar for AI Chat */
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-najd-50 text-slate-800 antialiased selection:bg-najd-400 selection:text-white">
+
+    <!-- Top Competition Banner -->
+    <div class="bg-nile-950 text-najd-100 text-xs py-2 px-4 text-center border-b border-nile-800">
+        <span data-i18n="bannerTitle" class="font-semibold text-najd-400">Egyptian Creator (المبدع المصري) • Season 2 (2026/2027)</span>
+        <span class="hidden sm:inline mx-2">|</span>
+        <span data-i18n="bannerSub" class="block sm:inline text-slate-300">Programming & AI Track • Egyptian Consulate & Cultural Bureau in Riyadh & EYUA</span>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-40 glass-card border-b border-najd-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-nile-700 to-oasis-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i data-lucide="compass" class="w-5 h-5 text-najd-100"></i>
+                </div>
+                <div>
+                    <span data-i18n="brandName" class="font-serif font-bold text-lg text-nile-900 tracking-tight block leading-none">Nile & Najd</span>
+                    <span data-i18n="brandTagline" class="text-[11px] font-medium text-najd-600 tracking-wider">Bridges of Youth</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+                <a href="#explorer" data-i18n="navExplorer" class="hover:text-nile-700 transition-colors">Heritage Explorer</a>
+                <a href="#ai-companion" class="hover:text-nile-700 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-najd-500"></i>
+                    <span data-i18n="navAI">AI Companion</span>
+                </a>
+                <a href="#quiz" data-i18n="navQuiz" class="hover:text-nile-700 transition-colors">Cultural Quiz</a>
+                <a href="#student-voice" data-i18n="navStudent" class="hover:text-nile-700 transition-colors">Student Spirit</a>
+            </nav>
+
+            <!-- Language Toggle & Project Info Actions -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Prominent Bilingual Language Toggle -->
+                <button
+                    id="lang-toggle-btn"
+                    onclick="toggleLanguage()"
+                    aria-label="Switch Language"
+                    class="px-3.5 py-2 rounded-xl bg-najd-100 hover:bg-najd-300/50 border border-najd-400/50 text-nile-900 text-xs sm:text-sm font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                    <i data-lucide="languages" class="w-4 h-4 text-najd-600"></i>
+                    <span id="lang-toggle-label">العربية</span>
+                </button>
+
+                <!-- Project Info Button -->
+                <button onclick="openAboutModal()" class="px-3.5 py-2 rounded-xl bg-nile-800 hover:bg-nile-900 text-white text-xs sm:text-sm font-medium transition-all shadow-sm flex items-center gap-1.5 cursor-pointer">
+                    <i data-lucide="award" class="w-4 h-4 text-najd-400"></i>
+                    <span data-i18n="btnProjectInfo" class="hidden sm:inline">Project Info</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-nile-900 via-nile-800 to-nile-900 text-white">
+        <!-- Decorative Background Glows -->
+        <div class="absolute inset-0 opacity-15 pointer-events-none">
+            <div class="absolute -top-24 -start-24 w-96 h-96 rounded-full bg-najd-400 blur-3xl"></div>
+            <div class="absolute top-1/2 end-0 w-80 h-80 rounded-full bg-oasis-600 blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-najd-100 text-xs font-medium backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span data-i18n="heroBadge">From an Egyptian Student's Heart in Saudi Arabia</span>
+                    </div>
+
+                    <h1 data-i18n="heroTitle" class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                        Where the <span class="text-najd-400">Nile</span> Meets the <span class="text-emerald-400">Sands of Najd</span>
+                    </h1>
+
+                    <p data-i18n="heroDesc" class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        An interactive digital platform celebrating the timeless brotherhood between <strong>Egypt</strong> and <strong>Saudi Arabia</strong>—uniting ancient civilizations, shared values, and the vibrant spirit of Egyptian youth growing up in the Kingdom.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#explorer" class="px-6 py-3.5 rounded-xl bg-najd-500 hover:bg-najd-600 text-white font-semibold text-sm transition-all shadow-lg shadow-najd-500/25 flex items-center gap-2">
+                            <span data-i18n="heroCtaPrimary">Explore Twin Civilizations</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 rtl:rotate-180"></i>
+                        </a>
+                        <a href="#ai-companion" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm transition-all backdrop-blur-sm flex items-center gap-2">
+                            <i data-lucide="bot" class="w-4 h-4 text-najd-400"></i>
+                            <span data-i18n="heroCtaSecondary">Ask AI Cultural Guide</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Pillars -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div data-i18n="stat1Num" class="text-2xl font-serif font-bold text-najd-400">7,000+</div>
+                            <div data-i18n="stat1Label" class="text-xs text-slate-300">Years of Heritage</div>
+                        </div>
+                        <div>
+                            <div data-i18n="stat2Num" class="text-2xl font-serif font-bold text-emerald-400">2 Nations</div>
+                            <div data-i18n="stat2Label" class="text-xs text-slate-300">One Shared Soul</div>
+                        </div>
+                        <div>
+                            <div data-i18n="stat3Num" class="text-2xl font-serif font-bold text-sky-300">AI + Code</div>
+                            <div data-i18n="stat3Label" class="text-xs text-slate-300">Youth Innovation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Showcase Card Column -->
+                <div class="lg:col-span-5">
+                    <div class="relative rounded-3xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 p-6 sm:p-8 backdrop-blur-md shadow-2xl animate-float">
+                        <div class="flex items-center justify-between pb-6 border-b border-white/10 gap-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-3xl" role="img" aria-label="Egypt">🇪🇬</span>
+                                <div>
+                                    <h3 data-i18n="cardEgyptTitle" class="font-bold text-sm text-white">Arab Republic of Egypt</h3>
+                                    <p data-i18n="cardEgyptSub" class="text-xs text-najd-100">Cradle of Civilization</p>
+                                </div>
+                            </div>
+                            <div class="w-9 h-9 rounded-full bg-najd-500/30 flex items-center justify-center text-najd-400 shrink-0">
+                                <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex items-center gap-2.5 text-end">
+                                <div>
+                                    <h3 data-i18n="cardSaudiTitle" class="font-bold text-sm text-white">Kingdom of Saudi Arabia</h3>
+                                    <p data-i18n="cardSaudiSub" class="text-xs text-emerald-300">Land of Generosity</p>
+                                </div>
+                                <span class="text-3xl" role="img" aria-label="Saudi Arabia">🇸🇦</span>
+                            </div>
+                        </div>
+
+                        <!-- Student Perspective Quote -->
+                        <div class="my-6 space-y-3">
+                            <div data-i18n="quoteBadge" class="inline-block px-2.5 py-1 rounded-md bg-najd-500/20 text-najd-300 text-xs font-medium">
+                                Student Reflection • Riyadh, KSA
+                            </div>
+                            <p data-i18n="quoteText" class="font-serif italic text-lg text-slate-100 leading-relaxed">
+                                "Growing up as an Egyptian student in Saudi Arabia means carrying the pride of the Pyramids in our roots while flourishing under the warmth and hospitality of Riyadh's skies."
+                            </p>
+                        </div>
+
+                        <!-- Hashtags -->
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 rounded-lg bg-nile-900/60 text-xs text-slate-200 border border-white/10">#المبدع_المصري</span>
+                            <span class="px-3 py-1 rounded-lg bg-nile-900/60 text-xs text-slate-200 border border-white/10">#EgyptSaudiBond</span>
+                            <span class="px-3 py-1 rounded-lg bg-nile-900/60 text-xs text-slate-200 border border-white/10">#RiyadhYouth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Interactive Twin Civilizations Explorer -->
+    <section id="explorer" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+            <span data-i18n="expEyebrow" class="text-xs font-bold uppercase tracking-widest text-najd-600">Interactive Civilization Explorer</span>
+            <h2 data-i18n="expTitle" class="font-serif text-3xl sm:text-4xl font-bold text-nile-900">Two Great Histories, One Timeless Connection</h2>
+            <p data-i18n="expSubtitle" class="text-slate-600 text-sm sm:text-base">
+                Select a theme below to discover how Egyptian and Saudi landmarks, traditions, and visions mirror and enrich one another.
+            </p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 border-b border-slate-200 pb-4" id="explorer-tabs">
+            <button onclick="filterExplorer('landmarks')" data-tab="landmarks" class="explorer-tab tab-active px-4 py-2.5 text-sm rounded-t-xl transition-all flex items-center gap-2 cursor-pointer">
+                <i data-lucide="landmark" class="w-4 h-4"></i>
+                <span data-i18n="tabLandmarks">Ancient Wonders</span>
+            </button>
+            <button onclick="filterExplorer('hospitality')" data-tab="hospitality" class="explorer-tab px-4 py-2.5 text-sm text-slate-500 hover:text-nile-800 rounded-t-xl transition-all flex items-center gap-2 cursor-pointer">
+                <i data-lucide="coffee" class="w-4 h-4"></i>
+                <span data-i18n="tabHospitality">Warmth & Hospitality</span>
+            </button>
+            <button onclick="filterExplorer('seas')" data-tab="seas" class="explorer-tab px-4 py-2.5 text-sm text-slate-500 hover:text-nile-800 rounded-t-xl transition-all flex items-center gap-2 cursor-pointer">
+                <i data-lucide="waves" class="w-4 h-4"></i>
+                <span data-i18n="tabSeas">Shared Waters & Geography</span>
+            </button>
+            <button onclick="filterExplorer('future')" data-tab="future" class="explorer-tab px-4 py-2.5 text-sm text-slate-500 hover:text-nile-800 rounded-t-xl transition-all flex items-center gap-2 cursor-pointer">
+                <i data-lucide="rocket" class="w-4 h-4"></i>
+                <span data-i18n="tabFuture">Vision & Youth Future</span>
+            </button>
+        </div>
+
+        <!-- Dynamic Comparison Cards -->
+        <div id="explorer-content" class="grid md:grid-cols-2 gap-8 items-stretch">
+            <!-- Injected via JS -->
+        </div>
+
+        <!-- Cultural Bridge Insight Box -->
+        <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-nile-800 to-oasis-700 text-white shadow-lg flex flex-col sm:flex-row items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                <i data-lucide="link" class="w-6 h-6 text-najd-400"></i>
+            </div>
+            <div class="text-center sm:text-start">
+                <h4 data-i18n="bridgeLabel" class="font-bold text-najd-300 text-xs sm:text-sm uppercase tracking-wider">The Cultural Bridge</h4>
+                <p id="bridge-text" class="text-sm sm:text-base text-slate-100 mt-1 leading-relaxed"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: AI Cultural Companion (Gemini Powered) -->
+    <section id="ai-companion" class="py-16 sm:py-24 bg-white border-y border-najd-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-nile-50 text-nile-700 text-xs font-semibold border border-nile-100">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-najd-500"></i>
+                    <span data-i18n="aiBadge">Artificial Intelligence Track Feature</span>
+                </div>
+                <h2 data-i18n="aiTitle" class="font-serif text-3xl sm:text-4xl font-bold text-nile-900">AI Cultural & Heritage Companion</h2>
+                <p data-i18n="aiSubtitle" class="text-slate-600 text-sm sm:text-base">
+                    Ask our AI guide about Egyptian–Saudi history, generate a short poem celebrating our friendship, or explore fun cultural facts!
+                </p>
+            </div>
+
+            <!-- AI Chat Container -->
+            <div class="rounded-3xl border border-slate-200 bg-najd-50/50 shadow-xl overflow-hidden">
+                <!-- Chat Header -->
+                <div class="bg-nile-900 px-6 py-4 flex items-center justify-between text-white">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-najd-500 to-oasis-600 flex items-center justify-center shadow">
+                            <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 data-i18n="aiBotName" class="font-semibold text-sm">Nile & Najd AI Ambassador</h3>
+                            <p class="text-xs text-emerald-400 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
+                                <span data-i18n="aiBotStatus">Ready to explore heritage</span>
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="clearChat()" data-i18n="aiResetBtn" class="text-xs text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-white/10 transition-colors cursor-pointer">
+                        Reset Chat
+                    </button>
+                </div>
+
+                <!-- Quick Prompt Chips -->
+                <div id="quick-prompts-bar" class="px-6 py-3 bg-white border-b border-slate-200 flex items-center gap-2 overflow-x-auto">
+                    <!-- Injected via JS based on current language -->
+                </div>
+
+                <!-- Messages Feed -->
+                <div id="chat-messages" class="p-6 h-80 sm:h-96 overflow-y-auto space-y-4 chat-scroll">
+                    <!-- Welcome message injected via JS -->
+                </div>
+
+                <!-- Input Form -->
+                <form id="chat-form" onsubmit="handleChatSubmit(event)" class="p-4 bg-white border-t border-slate-200 flex gap-3">
+                    <input
+                        type="text"
+                        id="chat-input"
+                        placeholder="Ask about Egypt & Saudi Arabia, or request a story..."
+                        class="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-nile-600 focus:border-transparent text-sm"
+                        required
+                    >
+                    <button
+                        type="submit"
+                        id="chat-submit-btn"
+                        class="px-5 py-3 rounded-xl bg-nile-800 hover:bg-nile-900 text-white font-medium text-sm transition-all flex items-center gap-2 shadow-sm disabled:opacity-50 cursor-pointer"
+                    >
+                        <span data-i18n="aiSendBtn">Send</span>
+                        <i data-lucide="send" class="w-4 h-4 rtl:rotate-180"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Gamified Heritage Quiz & Certificate -->
+    <section id="quiz" class="py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+            <span data-i18n="quizEyebrow" class="text-xs font-bold uppercase tracking-widest text-oasis-600">Interactive Challenge</span>
+            <h2 data-i18n="quizTitle" class="font-serif text-3xl sm:text-4xl font-bold text-nile-900">Nile & Najd Heritage Quiz</h2>
+            <p data-i18n="quizSubtitle" class="text-slate-600 text-sm sm:text-base">
+                Test your knowledge about Egyptian and Saudi geography, culture, and shared history to earn your Cultural Ambassador Badge!
+            </p>
+        </div>
+
+        <!-- Quiz Card -->
+        <div class="rounded-3xl bg-white border border-slate-200 shadow-xl p-6 sm:p-10" id="quiz-container">
+            <!-- Progress Header -->
+            <div id="quiz-header" class="mb-8">
+                <div class="flex justify-between items-center text-xs font-semibold text-slate-500 mb-2">
+                    <span id="quiz-progress-text">Question 1 of 5</span>
+                    <span id="quiz-score-text" class="text-oasis-600">Score: 0</span>
+                </div>
+                <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-nile-600 to-najd-500 transition-all duration-300" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <!-- Question & Options -->
+            <div id="quiz-body" class="space-y-6">
+                <h3 id="quiz-question" class="font-serif text-xl sm:text-2xl font-bold text-nile-900 leading-snug">
+                    Loading question...
+                </h3>
+                <div id="quiz-options" class="grid gap-3">
+                    <!-- Options injected via JS -->
+                </div>
+                <!-- Explanation Feedback -->
+                <div id="quiz-feedback" class="hidden p-4 rounded-xl text-sm leading-relaxed"></div>
+                <div class="flex justify-end pt-2">
+                    <button id="quiz-next-btn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-nile-800 hover:bg-nile-900 text-white font-semibold text-sm transition-all flex items-center gap-2 cursor-pointer">
+                        <span id="quiz-next-label">Next Question</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:rotate-180"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Final Certificate / Results View -->
+            <div id="quiz-result" class="hidden text-center space-y-6 py-4">
+                <div class="w-20 h-20 rounded-full bg-najd-100 text-najd-600 flex items-center justify-center mx-auto shadow-inner">
+                    <i data-lucide="trophy" class="w-10 h-10"></i>
+                </div>
+                <div class="space-y-2">
+                    <span data-i18n="certBadgeTag" class="px-3 py-1 rounded-full bg-emerald-100 text-oasis-700 text-xs font-bold uppercase">Cultural Ambassador Certified</span>
+                    <h3 data-i18n="certCongrats" class="font-serif text-3xl font-bold text-nile-900">Congratulations!</h3>
+                    <p id="final-score-summary" class="text-slate-600 text-base"></p>
+                </div>
+
+                <!-- Optional Name Input to Personalize Certificate -->
+                <div class="max-w-sm mx-auto">
+                    <input
+                        type="text"
+                        id="cert-name-input"
+                        oninput="updateCertificateName(this.value)"
+                        placeholder="Enter your name for the certificate..."
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-center text-sm focus:outline-none focus:ring-2 focus:ring-najd-500"
+                    >
+                </div>
+
+                <!-- Digital Award Certificate -->
+                <div id="digital-certificate" class="max-w-lg mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-nile-950 via-nile-900 to-nile-800 text-white border-2 border-najd-400 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 end-0 w-32 h-32 bg-najd-400/10 rounded-full blur-2xl"></div>
+                    <div class="text-xs uppercase tracking-widest text-najd-400 font-bold" data-i18n="certOrg">Egyptian Creator • Season 2 (2026/2027)</div>
+                    <div class="font-serif text-2xl font-bold mt-2 text-white" data-i18n="certAwardTitle">Nile & Najd Youth Bridge Award</div>
+                    <div id="cert-recipient-display" class="my-3 py-2 px-4 rounded-lg bg-white/10 border border-white/15 font-serif text-lg text-najd-300 font-semibold">
+                        Young Cultural Ambassador
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed" data-i18n="certDesc">
+                        Awarded for celebrating the enduring friendship, shared civilization, and brotherhood of Egypt 🇪🇬 & Saudi Arabia 🇸🇦
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                    <button onclick="downloadCertificate()" class="px-6 py-3 rounded-xl bg-oasis-600 hover:bg-oasis-700 text-white font-semibold text-sm transition-all shadow flex items-center gap-2 cursor-pointer">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span data-i18n="certDownloadBtn">Download Certificate</span>
+                    </button>
+                    <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-najd-500 hover:bg-najd-600 text-white font-semibold text-sm transition-all shadow flex items-center gap-2 cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        <span data-i18n="certReplayBtn">Play Again</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Spirit of Egyptian Students in KSA -->
+    <section id="student-voice" class="py-16 bg-nile-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-1 space-y-4 text-center lg:text-start">
+                    <span data-i18n="voiceEyebrow" class="text-xs font-bold uppercase tracking-widest text-najd-400">Youth Perspective</span>
+                    <h2 data-i18n="voiceTitle" class="font-serif text-3xl font-bold leading-tight">The Spirit of Egypt Inside Every Student in KSA</h2>
+                    <p data-i18n="voiceDesc" class="text-slate-300 text-sm leading-relaxed">
+                        Living abroad transforms us into young ambassadors. In Saudi schools and communities, Egyptian students carry their rich identity with pride while embracing Saudi culture as a second home.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-najd-500/20 text-najd-400 flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5"></i>
+                        </div>
+                        <h3 data-i18n="pillar1Title" class="font-bold text-lg">Academic & Cultural Pride</h3>
+                        <p data-i18n="pillar1Desc" class="text-sm text-slate-300 leading-relaxed">
+                            Sharing stories of Egyptian history, literature, and humor in classrooms across Riyadh, Jeddah, and Dammam while excelling in modern STEM fields.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                            <i data-lucide="globe" class="w-5 h-5"></i>
+                        </div>
+                        <h3 data-i18n="pillar2Title" class="font-bold text-lg">One Shared Future</h3>
+                        <p data-i18n="pillar2Desc" class="text-sm text-slate-300 leading-relaxed">
+                            Inspired by Egypt's New Republic and Saudi Vision 2030, youth in both nations are using coding and AI to build bridges of innovation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-nile-950 text-slate-400 py-10 border-t border-white/10 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-start">
+                <p data-i18n="footerTitle" class="font-serif font-bold text-white text-base">Nile & Najd: Bridges of Heritage & Youth</p>
+                <p data-i18n="footerSub" class="text-xs mt-1">Submitted for <strong>"Egyptian Creator" (المبدع المصري) Season 2 (2026/2027)</strong> — Programming & AI Track</p>
+            </div>
+            <div class="text-xs text-center sm:text-end space-y-1">
+                <p data-i18n="footerOrgs" class="text-slate-300">Egyptian Consulate in Riyadh • Egyptian Cultural & Educational Bureau • EYUA</p>
+                <p data-i18n="footerCredit" class="text-najd-400">Crafted with ❤️ by an Egyptian Student in Saudi Arabia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Info Modal -->
+    <div id="about-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl space-y-5 relative">
+            <button onclick="closeAboutModal()" class="absolute top-5 end-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <div data-i18n="modalBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-najd-100 text-najd-600 text-xs font-bold">
+                Competition Submission Overview
+            </div>
+            <h3 data-i18n="modalTitle" class="font-serif text-2xl font-bold text-nile-900">About This Web Application</h3>
+            <p data-i18n="modalIntro" class="text-sm text-slate-600 leading-relaxed">
+                <strong>Nile & Najd</strong> was designed specifically for the <strong>"Egyptian Creator" Season 2 (2026/2027)</strong> competition under the <strong>Programming & Artificial Intelligence</strong> track.
+            </p>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-oasis-600 shrink-0 mt-0.5"></i>
+                    <span data-i18n="modalPoint1"><strong>Theme Alignment:</strong> Highlights the deep historical and emotional bond between Egypt and Saudi Arabia from the perspective of an Egyptian student living in KSA.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-oasis-600 shrink-0 mt-0.5"></i>
+                    <span data-i18n="modalPoint2"><strong>Bilingual Architecture:</strong> Full English & Arabic support with instant RTL/LTR layout switching.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-oasis-600 shrink-0 mt-0.5"></i>
+                    <span data-i18n="modalPoint3"><strong>AI Integration:</strong> Live Gemini AI Cultural Ambassador capable of answering heritage questions and generating creative tributes in both languages.</span>
+                </li>
+            </ul>
+            <div class="pt-2 flex justify-end">
+                <button onclick="closeAboutModal()" data-i18n="modalCloseBtn" class="px-5 py-2.5 rounded-xl bg-nile-800 text-white text-sm font-semibold hover:bg-nile-900 cursor-pointer">
+                    Explore App
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // ==========================================
+        // 0. BILINGUAL DICTIONARY & STATE
+        // ==========================================
+        let currentLang = 'en';
+        let currentExplorerTab = 'landmarks';
+
+        const uiStrings = {
+            en: {
+                toggleLabel: "العربية",
+                bannerTitle: "Egyptian Creator (المبدع المصري) • Season 2 (2026/2027)",
+                bannerSub: "Programming & AI Track • Egyptian Consulate & Cultural Bureau in Riyadh & EYUA",
+                brandName: "Nile & Najd",
+                brandTagline: "Bridges of Youth",
+                navExplorer: "Heritage Explorer",
+                navAI: "AI Companion",
+                navQuiz: "Cultural Quiz",
+                navStudent: "Student Spirit",
+                btnProjectInfo: "Project Info",
+                heroBadge: "From an Egyptian Student's Heart in Saudi Arabia",
+                heroTitle: `Where the <span class="text-najd-400">Nile</span> Meets the <span class="text-emerald-400">Sands of Najd</span>`,
+                heroDesc: `An interactive digital platform celebrating the timeless brotherhood between <strong>Egypt</strong> and <strong>Saudi Arabia</strong>—uniting ancient civilizations, shared values, and the vibrant spirit of Egyptian youth growing up in the Kingdom.`,
+                heroCtaPrimary: "Explore Twin Civilizations",
+                heroCtaSecondary: "Ask AI Cultural Guide",
+                stat1Num: "7,000+",
+                stat1Label: "Years of Heritage",
+                stat2Num: "2 Nations",
+                stat2Label: "One Shared Soul",
+                stat3Num: "AI + Code",
+                stat3Label: "Youth Innovation",
+                cardEgyptTitle: "Arab Republic of Egypt",
+                cardEgyptSub: "Cradle of Civilization",
+                cardSaudiTitle: "Kingdom of Saudi Arabia",
+                cardSaudiSub: "Land of Generosity",
+                quoteBadge: "Student Reflection • Riyadh, KSA",
+                quoteText: `"Growing up as an Egyptian student in Saudi Arabia means carrying the pride of the Pyramids in our roots while flourishing under the warmth and hospitality of Riyadh's skies."`,
+                expEyebrow: "Interactive Civilization Explorer",
+                expTitle: "Two Great Histories, One Timeless Connection",
+                expSubtitle: "Select a theme below to discover how Egyptian and Saudi landmarks, traditions, and visions mirror and enrich one another.",
+                tabLandmarks: "Ancient Wonders",
+                tabHospitality: "Warmth & Hospitality",
+                tabSeas: "Shared Waters & Geography",
+                tabFuture: "Vision & Youth Future",
+                bridgeLabel: "The Cultural Bridge",
+                countryEgypt: "Arab Republic of Egypt",
+                countrySaudi: "Kingdom of Saudi Arabia",
+                aiBadge: "Artificial Intelligence Track Feature",
+                aiTitle: "AI Cultural & Heritage Companion",
+                aiSubtitle: "Ask our AI guide about Egyptian–Saudi history, generate a short poem celebrating our friendship, or explore fun cultural facts!",
+                aiBotName: "Nile & Najd AI Ambassador",
+                aiBotStatus: "Ready to explore heritage",
+                aiResetBtn: "Reset Chat",
+                aiInputPlaceholder: "Ask about Egypt & Saudi Arabia, or request a story...",
+                aiSendBtn: "Send",
+                aiTyping: "Crafting cultural insight...",
+                aiWelcome: `Marhaba & Ahlan! 👋 I am your <strong>Nile & Najd AI Companion</strong>. Whether you're a judge reviewing this project or a fellow student in Saudi Arabia, ask me anything about Egyptian and Saudi civilizations, shared traditions, or let me craft creative stories celebrating our unity!`,
+                aiResetMsg: "Chat reset! Ask me anything about Egyptian and Saudi heritage, history, or youth life in Saudi Arabia. 🇪🇬🤝🇸🇦",
+                tryAskingLabel: "Try asking:",
+                quizEyebrow: "Interactive Challenge",
+                quizTitle: "Nile & Najd Heritage Quiz",
+                quizSubtitle: "Test your knowledge about Egyptian and Saudi geography, culture, and shared history to earn your Cultural Ambassador Badge!",
+                quizNext: "Next Question",
+                quizFinish: "See My Certificate",
+                certBadgeTag: "Cultural Ambassador Certified",
+                certCongrats: "Congratulations!",
+                certNamePlaceholder: "Enter your name for the certificate...",
+                certDefaultRecipient: "Young Cultural Ambassador",
+                certOrg: "Egyptian Creator • Season 2 (2026/2027)",
+                certAwardTitle: "Nile & Najd Youth Bridge Award",
+                certDesc: "Awarded for celebrating the enduring friendship, shared civilization, and brotherhood of Egypt 🇪🇬 & Saudi Arabia 🇸🇦",
+                certDownloadBtn: "Download Certificate",
+                certReplayBtn: "Play Again",
+                voiceEyebrow: "Youth Perspective",
+                voiceTitle: "The Spirit of Egypt Inside Every Student in KSA",
+                voiceDesc: "Living abroad transforms us into young ambassadors. In Saudi schools and communities, Egyptian students carry their rich identity with pride while embracing Saudi culture as a second home.",
+                pillar1Title: "Academic & Cultural Pride",
+                pillar1Desc: "Sharing stories of Egyptian history, literature, and humor in classrooms across Riyadh, Jeddah, and Dammam while excelling in modern STEM fields.",
+                pillar2Title: "One Shared Future",
+                pillar2Desc: "Inspired by Egypt's New Republic and Saudi Vision 2030, youth in both nations are using coding and AI to build bridges of innovation.",
+                footerTitle: "Nile & Najd: Bridges of Heritage & Youth",
+                footerSub: `Submitted for <strong>"Egyptian Creator" (المبدع المصري) Season 2 (2026/2027)</strong> — Programming & AI Track`,
+                footerOrgs: "Egyptian Consulate in Riyadh • Egyptian Cultural & Educational Bureau • EYUA",
+                footerCredit: "Crafted with ❤️ by an Egyptian Student in Saudi Arabia",
+                modalBadge: "Competition Submission Overview",
+                modalTitle: "About This Web Application",
+                modalIntro: `<strong>Nile & Najd</strong> was designed specifically for the <strong>"Egyptian Creator" Season 2 (2026/2027)</strong> competition under the <strong>Programming & Artificial Intelligence</strong> track.`,
+                modalPoint1: `<strong>Theme Alignment:</strong> Highlights the deep historical and emotional bond between Egypt and Saudi Arabia from the perspective of an Egyptian student living in KSA.`,
+                modalPoint2: `<strong>Bilingual Architecture:</strong> Full English & Arabic support with instant RTL/LTR layout switching.`,
+                modalPoint3: `<strong>AI Integration:</strong> Live Gemini AI Cultural Ambassador capable of answering heritage questions and generating creative tributes in both languages.`,
+                modalCloseBtn: "Explore App"
+            },
+            ar: {
+                toggleLabel: "English",
+                bannerTitle: "مسابقة «المبدع المصري» • الموسم الثاني (2026 / 2027)",
+                bannerSub: "فرع البرمجة والذكاء الاصطناعي • القنصلية المصرية والمكتب الثقافي بالرياض واتحاد شباب المصريين بالخارج",
+                brandName: "النيل ونجد",
+                brandTagline: "جسور الحضارة والشباب",
+                navExplorer: "مستكشف الحضارتين",
+                navAI: "المساعد الذكي AI",
+                navQuiz: "التحدي الثقافي",
+                navStudent: "روح الطالب المصري",
+                btnProjectInfo: "عن المشروع",
+                heroBadge: "من قلب طالب مصري يعيش على أرض المملكة العربية السعودية",
+                heroTitle: `حيث يلتقي <span class="text-najd-400">نهر النيل</span> بـ <span class="text-emerald-400">رمال نجد</span>`,
+                heroDesc: `منصة رقمية تفاعلية تحتفي بأواصر الأخوة التاريخية بين <strong>مصر</strong> و<strong>المملكة العربية السعودية</strong>؛ وتجمع بين عراقة الحضارتين، والقيم المشتركة، وروح وجمال مصر في قلوب الطلاب المصريين بالمملكة.`,
+                heroCtaPrimary: "استكشف الحضارتين",
+                heroCtaSecondary: "تحدث مع المرشد الذكي AI",
+                stat1Num: "+7,000",
+                stat1Label: "عام من الحضارة",
+                stat2Num: "شعبان",
+                stat2Label: "وروح واحدة مشتركة",
+                stat3Num: "برمجة وAI",
+                stat3Label: "إبداع الشباب المصري",
+                cardEgyptTitle: "جمهورية مصر العربية",
+                cardEgyptSub: "مهد الحضارة والتاريخ",
+                cardSaudiTitle: "المملكة العربية السعودية",
+                cardSaudiSub: "أرض الكرم والأصالة",
+                quoteBadge: "خواطر طالب مصري • الرياض، السعودية",
+                quoteText: `"أن تنشأ كطالب مصري في المملكة العربية السعودية يعني أن تحمل شموخ الأهرامات في جذورك، وتزهر في رحاب كرم ودفء سماء الرياض."`,
+                expEyebrow: "مستكشف الحضارة التفاعلي",
+                expTitle: "تاريخان عظيمان.. ورابط أبدي لا ينقطع",
+                expSubtitle: "اختر محوراً من المحاور التالية لتكتشف كيف تتكامل المعالم والتقاليد والرؤى المستقبلية بين مصر والسعودية.",
+                tabLandmarks: "عجائب التاريخ والآثار",
+                tabHospitality: "الدفء والكرم الأصيل",
+                tabSeas: "البحر المشترك والجغرافيا",
+                tabFuture: "رؤية المستقبل والشباب",
+                bridgeLabel: "جسر التواصل الحضاري",
+                countryEgypt: "جمهورية مصر العربية",
+                countrySaudi: "المملكة العربية السعودية",
+                aiBadge: "ميزة فرع الذكاء الاصطناعي",
+                aiTitle: "المساعد الثقافي الذكي (AI Companion)",
+                aiSubtitle: "اسأل مرشدنا الذكي عن تاريخ العلاقات المصرية السعودية، أو اطلب منه تأليف قصيدة قصيرة عن أخوة البلدين!",
+                aiBotName: "سفير النيل ونجد الذكي",
+                aiBotStatus: "جاهز لاستكشاف التراث والحضارة",
+                aiResetBtn: "محادثة جديدة",
+                aiInputPlaceholder: "اسأل عن مصر والسعودية، أو اطلب قصة أو قصيدة...",
+                aiSendBtn: "إرسال",
+                aiTyping: "جاري صياغة الإجابة الثقافية...",
+                aiWelcome: `أهلاً ومرحباً بك! 👋 أنا <strong>سفير النيل ونجد الذكي</strong>. سواء كنت من لجنة التحكيم الموقرة أو طالباً مبدعاً في المملكة، اسألني عن الحضارة المصرية والسعودية، أو اطلب مني كتابة أبيات شعرية وقصص تحتفي بأخوة البلدين!`,
+                aiResetMsg: "تم بدء محادثة جديدة! اسألني أي سؤال عن التراث المصري والسعودي أو حياة الطلاب المصريين في المملكة. 🇪🇬🤝🇸🇦",
+                tryAskingLabel: "جرّب أن تسأل:",
+                quizEyebrow: "تحدي تفاعلي",
+                quizTitle: "مسابقة النيل ونجد الثقافية",
+                quizSubtitle: "اختبر معلوماتك حول جغرافيا وتاريخ وثقافة مصر والسعودية واحصل على شهادة سفير الثقافة الرقمية!",
+                quizNext: "السؤال التالي",
+                quizFinish: "عرض شهادتي",
+                certBadgeTag: "شهادة سفير الثقافة والتواصل",
+                certCongrats: "مبارك لك!",
+                certNamePlaceholder: "اكتب اسمك ليظهر على الشهادة...",
+                certDefaultRecipient: "سفير الثقافة الشاب",
+                certOrg: "مسابقة المبدع المصري • الموسم الثاني (2026 / 2027)",
+                certAwardTitle: "وسام جسر الشباب بين النيل ونجد",
+                certDesc: "تُمنح تقديراً للاحتفاء بأواصر الصداقة التاريخية والحضارة المشتركة بين مصر 🇪🇬 والمملكة العربية السعودية 🇸🇦",
+                certDownloadBtn: "تحميل الشهادة (صورة)",
+                certReplayBtn: "إعادة الاختبار",
+                voiceEyebrow: "منظور الشباب",
+                voiceTitle: "روح وجمال مصر داخل كل طالب مصري في السعودية",
+                voiceDesc: "العيش في الخارج يجعل من كل طالب سفيراً صغيراً لوطنه؛ ففي المدارس والمجتمع السعودي، يعتز الطالب المصري بهويته العريقة ويعيش في المملكة وكأنها وطنه الثاني.",
+                pillar1Title: "فخر الهوية والتفوق العلمي",
+                pillar1Desc: "ننقل قصص التاريخ والأدب وروح الدعابة المصرية في مدارس الرياض وجدة والدمام، مع التميز في مجالات العلوم والتقنية الحديثة.",
+                pillar2Title: "مستقبل مشترك نصنعه معاً",
+                pillar2Desc: "بإلهام من الجمهورية الجديدة في مصر ورؤية المملكة 2030، يبتكر شباب البلدين بالبرمجة والذكاء الاصطناعي جسوراً للمستقبل.",
+                footerTitle: "النيل ونجد: جسور الحضارة والشباب",
+                footerSub: `مشروع مشارك في مسابقة <strong>«المبدع المصري» الموسم الثاني (2026/2027)</strong> — فرع البرمجة والذكاء الاصطناعي`,
+                footerOrgs: "القنصلية المصرية بالرياض • المكتب الثقافي التعليمي المصري • اتحاد شباب المصريين بالخارج",
+                footerCredit: "صُنع بكل حب ❤️ بواسطة طالب مصري في المملكة العربية السعودية",
+                modalBadge: "نبذة عن المشروع المشارك",
+                modalTitle: "حول هذا التطبيق التفاعلي",
+                modalIntro: `تم تصميم وتطوير تطبيق <strong>«النيل ونجد»</strong> خصيصاً للمشاركة في مسابقة <strong>«المبدع المصري» الموسم الثاني (2026/2027)</strong> ضمن فرع <strong>البرمجة والذكاء الاصطناعي</strong>.`,
+                modalPoint1: `<strong>توافق تام مع موضوع المسابقة:</strong> يعزز صورة العلاقة بين مصر والسعودية من منظور الطالب المصري بالخارج، ويبرز جمال الحضارتين.`,
+                modalPoint2: `<strong>واجهة ثنائية اللغة (عربي / إنجليزي):</strong> دعم كامل للغتين مع التبديل الفوري لاتجاه الصفحة (RTL / LTR).`,
+                modalPoint3: `<strong>دمج الذكاء الاصطناعي (Gemini AI):</strong> مساعد ثقافي تفاعلي يجيب عن الأسئلة التاريخية ويؤلف نصوصاً إبداعية باللغتين.`,
+                modalCloseBtn: "استكشف التطبيق"
+            }
+        };
+
+        // ==========================================
+        // 1. CULTURAL EXPLORER BILINGUAL DATA
+        // ==========================================
+        const explorerData = {
+            landmarks: {
+                en: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "Pyramids of Giza & Luxor",
+                        subtitle: "Monumental Stone & Eternal Architecture",
+                        description: "Standing tall along the Nile for over 4,500 years, Egypt's pyramids and temples symbolize human ingenuity, astronomical precision, and timeless civilization.",
+                        highlight: "UNESCO World Heritage Icons"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "Al-Ula (Hegra) & Historic Diriyah",
+                        subtitle: "Carved Sandstone & Birthplace of a Nation",
+                        description: "From the breathtaking Nabataean tombs of Hegra in Al-Ula to the mud-brick majesty of At-Turaif in Diriyah, Saudi Arabia preserves millennia of Arabian heritage.",
+                        highlight: "Living Open-Air Museums"
+                    },
+                    bridge: "Both Egypt and Saudi Arabia guard ancient architectural wonders carved in stone and earth—connected for centuries by historic trade and pilgrimage routes across Sinai and the Hijaz."
+                },
+                ar: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "أهرامات الجيزة ومعابد الأقصر",
+                        subtitle: "شموخ الحجر وعبقرية العمارة الخالدة",
+                        description: "تقف أهرامات مصر ومعابدها على ضفاف النيل منذ أكثر من 4,500 عام شاهدةً على عبقرية الإنسان المصري ودقته الفلكية والهندسية.",
+                        highlight: "أيقونات التراث العالمي"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "العُلا (الحِجر) والدرعية التاريخية",
+                        subtitle: "نقوش الصخر وعراقة التأسيس",
+                        description: "من واجهات الحِجر المنحوتة في جبال العُلا إلى حي الطريف العريق في الدرعية، تحتفي المملكة بآلاف السنين من التاريخ العربي الأصيل.",
+                        highlight: "متاحف مفتوحة للتاريخ"
+                    },
+                    bridge: "تحرس مصر والسعودية روائع معمارية خالدة نُحتت في الصخر والطين، وربطت بينهما عبر العصور طرق التجارة والحج عبر سيناء والحجاز."
+                }
+            },
+            hospitality: {
+                en: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "Egyptian 'Gada'ana' & Warm Welcome",
+                        subtitle: "“El-Beit Beitak” (My Home is Your Home)",
+                        description: "Known across the Arab world for humor, generosity, and open doors, Egyptian hospitality turns every guest into family over a warm cup of mint tea.",
+                        highlight: "Spirit of Brotherhood"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "Saudi 'Karam' & Arabic Qahwa",
+                        subtitle: "Generosity Rooted in Desert Tradition",
+                        description: "In Saudi homes and Majlis gatherings, welcoming guests with cardamom-scented Saudi coffee and fine dates is a sacred honor passed down through generations.",
+                        highlight: "Authentic Arabian Generosity"
+                    },
+                    bridge: "For an Egyptian student living in Saudi Arabia, the transition feels seamless because both cultures place hospitality, respect for elders, and community warmth at the center of daily life."
+                },
+                ar: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "«الجدعنة» والترحيب المصري الدافئ",
+                        subtitle: "«البيت بيتك».. شعار يسبق الكلام",
+                        description: "تشتهر الضيافة المصرية بروح الدعابة والكرم والباب المفتوح للجميع، حيث يتحول الضيف في لحظات إلى فرد من العائلة حول كوب الشاي بالنعناع.",
+                        highlight: "روح الأخوة والمودة"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "«الكرم السعودي» والقهوة العربية",
+                        subtitle: "أصالة الضيافة المتوارثة عبر الأجيال",
+                        description: "في المجالس والبيوت السعودية، يُعد استقبال الضيف بدلة القهوة السعودية المبهرة بالهيل والتمر الفاخر رمزاً أصيلاً للشهامة والترحيب.",
+                        highlight: "أصالة الكرم العربي"
+                    },
+                    bridge: "يشعر الطالب المصري في السعودية وكأنه بين أهله، لأن الثقافتين تجعلان من إكرام الضيف واحترام الكبير ودفء الروابط الأسرية أسلوب حياة يومي."
+                }
+            },
+            seas: {
+                en: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "The Eternal Nile & Sinai Peninsula",
+                        subtitle: "Lifeline of Civilization & Gateway to Asia",
+                        description: "The Nile River nurtured agriculture, art, and science, while Sinai serves as Egypt's golden bridge linking Africa and the Arabian Peninsula.",
+                        highlight: "Heart of the Arab World"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "The Red Sea Coast & Tuwaiq Escarpment",
+                        subtitle: "Coral Reefs & Majestic Desert Horizons",
+                        description: "Stretching along the western shore, Saudi Arabia's Red Sea coast meets the dramatic plateaus of Najd, uniting maritime trade with desert resilience.",
+                        highlight: "Shared Maritime Heritage"
+                    },
+                    bridge: "The Red Sea does not divide Egypt and Saudi Arabia—it unites them. Across its waters, pilgrims, scholars, teachers, and families have traveled for centuries."
+                },
+                ar: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "نهر النيل الخالد وأرض سيناء",
+                        subtitle: "شريان الحياة وبوابة التواصل مع المشرق",
+                        description: "وهب النيل لمصر الزراعة والفنون والعلوم، بينما تقف سيناء جسراً ذهبياً يربط قارة أفريقيا بشبه الجزيرة العربية.",
+                        highlight: "قلب العالم العربي"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "ساحل البحر الأحمر وجبل طويق",
+                        subtitle: "شعاب مرجانية وشموخ صحراء نجد",
+                        description: "يمتد الساحل الغربي للمملكة على ضفاف البحر الأحمر ليلتقي بهضاب نجد وجبل طويق الشامخ، جامعاً بين التراث البحري وعراقة الصحراء.",
+                        highlight: "تراث بحري مشترك"
+                    },
+                    bridge: "البحر الأحمر لا يفصل بين مصر والسعودية، بل يجمعهما؛ فعبر مياهه تواصل العلماء والمعلمون والحجاج والأسر على مر القرون."
+                }
+            },
+            future: {
+                en: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "Egypt's Digital Youth & New Republic",
+                        subtitle: "Innovation, Engineering & Creative Arts",
+                        description: "Egyptian youth continue to lead in software engineering, medicine, arts, and science, building smart cities and digital solutions for tomorrow.",
+                        highlight: "Empowering Young Minds"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "Saudi Vision 2030 & Smart Future",
+                        subtitle: "NEOM, AI Leadership & Youth Empowerment",
+                        description: "With bold investments in Artificial Intelligence, sustainability, and education, Saudi Arabia is inspiring an entire generation of innovators in the region.",
+                        highlight: "Transforming the Region"
+                    },
+                    bridge: "Egyptian students studying in Saudi Arabia stand at the intersection of two ambitious visions—equipped with the skills to contribute to both their homeland and their host country."
+                },
+                ar: {
+                    egypt: {
+                        flag: "🇪🇬",
+                        title: "شباب مصر الرقمي والجمهورية الجديدة",
+                        subtitle: "الابتكار والهندسة والفنون الإبداعية",
+                        description: "يواصل الشباب المصري ريادته في هندسة البرمجيات والطب والفنون والعلوم، لبناء مدن ذكية وحلول رقمية تصنع المستقبل.",
+                        highlight: "تمكين العقول الشابة"
+                    },
+                    saudi: {
+                        flag: "🇸🇦",
+                        title: "رؤية السعودية 2030 ومستقبل الذكاء الاصطناعي",
+                        subtitle: "نيوم والريادة التقنية وتمكين الشباب",
+                        description: "بفضل الاستثمارات الطموحة في الذكاء الاصطناعي والاستدامة والتعليم، تُلهم المملكة جيلاً كاملاً من المبدعين في المنطقة.",
+                        highlight: "نهضة تنموية شاملة"
+                    },
+                    bridge: "يقف الطالب المصري في السعودية عند نقطة التقاء رؤيتين طموحتين، متسلحاً بالعلم والبرمجة ليسهم في نهضة وطنه الأم وبلده الثاني."
+                }
+            }
+        };
+
+        // ==========================================
+        // 2. QUIZ BILINGUAL DATA
+        // ==========================================
+        const quizData = {
+            en: [
+                {
+                    question: "Which body of water connects the coasts of both Egypt and Saudi Arabia, serving as a historic bridge of trade and culture?",
+                    options: ["The Mediterranean Sea", "The Red Sea", "The Arabian Gulf", "The Nile Delta"],
+                    correct: 1,
+                    explanation: "The Red Sea borders eastern Egypt and western Saudi Arabia, uniting both nations through shared maritime history and coastal beauty."
+                },
+                {
+                    question: "Which iconic Saudi UNESCO World Heritage site in Riyadh Province is known as the historic birthplace of the Saudi state?",
+                    options: ["At-Turaif in Diriyah", "Al-Balad in Jeddah", "Mount Uhud", "Jebel Fihrayn"],
+                    correct: 0,
+                    explanation: "At-Turaif District in Diriyah, located right near Riyadh, is a masterpiece of Najdi mud-brick architecture and a UNESCO World Heritage site."
+                },
+                {
+                    question: "In ancient Egypt, which monumental complex on the Giza Plateau was built over 4,500 years ago and remains one of the Seven Wonders of the Ancient World?",
+                    options: ["Karnak Temple", "The Great Pyramids & Sphinx", "Abu Simbel", "Alexandria Library"],
+                    correct: 1,
+                    explanation: "The Pyramids of Giza stand as an eternal symbol of Egyptian engineering, science, and civilization."
+                },
+                {
+                    question: "What traditional beverage is universally served with dates in Saudi Arabia as a symbol of generosity ('Karam')?",
+                    options: ["Hibiscus Karkadeh", "Cardamom-spiced Saudi Qahwa", "Turkish Espresso", "Mint Lemonade"],
+                    correct: 1,
+                    explanation: "Saudi Qahwa (Arabic coffee infused with cardamom and saffron) served alongside dates is the hallmark of Saudi hospitality."
+                },
+                {
+                    question: "What is the central theme of the 'Egyptian Creator' (المبدع المصري) Season 2 competition?",
+                    options: [
+                        "Space exploration only",
+                        "Strengthening the Egypt–Saudi bond & showcasing Egyptian spirit among students in KSA",
+                        "European history",
+                        "Ancient Greek mythology"
+                    ],
+                    correct: 1,
+                    explanation: "The competition celebrates the deep relationship between Egypt and Saudi Arabia from the perspective of Egyptian students living in KSA!"
+                }
+            ],
+            ar: [
+                {
+                    question: "ما هو المسطح المائي الذي يربط سواحل مصر والمملكة العربية السعودية ويشكّل جسراً تاريخياً للتجارة والثقافة؟",
+                    options: ["البحر الأبيض المتوسط", "البحر الأحمر", "الخليج العربي", "دلتا النيل"],
+                    correct: 1,
+                    explanation: "يحد البحر الأحمر شرق مصر وغرب المملكة العربية السعودية، ليجمع البلدين بتاريخ بحري مشترك وطبيعة خلابة."
+                },
+                {
+                    question: "ما هو الموقع السعودي المدرج على قائمة التراث العالمي لليونسكو في منطقة الرياض ويُعد مهد الدولة السعودية؟",
+                    options: ["حي الطريف في الدرعية", "جدة التاريخية (البلد)", "جبل أحد", "حافة العالم"],
+                    correct: 0,
+                    explanation: "حي الطريف في الدرعية بالقرب من الرياض يُعد تحفة معمارية من الطين النجدي وأحد أهم مواقع التراث العالمي."
+                },
+                {
+                    question: "في مصر القديمة، ما هو الصرح المعماري على هضبة الجيزة الذي بُني منذ أكثر من 4,500 عام ويُعد من عجائب الدنيا السبع القديمة؟",
+                    options: ["معبد الكرنك", "أهرامات الجيزة وأبو الهول", "معبد أبو سمبل", "مكتبة الإسكندرية"],
+                    correct: 1,
+                    explanation: "تظل أهرامات الجيزة رمزاً خالداً للعبقرية الهندسية والعلمية في الحضارة المصرية القديمة."
+                },
+                {
+                    question: "ما هو المشروب التقليدي الذي يُقدّم مع التمر في المملكة العربية السعودية كرمز أصيل للكرم والضيافة؟",
+                    options: ["الكركديه", "القهوة السعودية بالهيل والزعفران", "الإسبريسو", "عصير الليمون بالنعناع"],
+                    correct: 1,
+                    explanation: "القهوة السعودية الأصيلة المطيّبة بالهيل والزعفران مع التمر هي عنوان الكرم والترحيب في كل بيت ومجلس سعودي."
+                },
+                {
+                    question: "ما هو الموضوع الرئيسي لمسابقة «المبدع المصري» الموسم الثاني (2026/2027)؟",
+                    options: [
+                        "استكشاف الفضاء فقط",
+                        "تعزيز صورة العلاقة بين مصر والسعودية وإبراز روح وجمال مصر داخل الطلاب المصريين بالمملكة",
+                        "التاريخ الأوروبي القديم",
+                        "الأساطير الإغريقية"
+                    ],
+                    correct: 1,
+                    explanation: "تهدف المسابقة إلى تعزيز العلاقة الأخوية بين مصر والسعودية من منظور الطالب المصري بالخارج وإبراز الحضارتين!"
+                }
+            ]
+        };
+
+        // ==========================================
+        // 3. LANGUAGE SWITCHING ENGINE
+        // ==========================================
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            const htmlEl = document.documentElement;
+            htmlEl.setAttribute('lang', lang);
+            htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            const t = uiStrings[lang];
+
+            // Update toggle button label
+            document.getElementById('lang-toggle-label').textContent = t.toggleLabel;
+
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Update input placeholders
+            document.getElementById('chat-input').placeholder = t.aiInputPlaceholder;
+            document.getElementById('cert-name-input').placeholder = t.certNamePlaceholder;
+            const nameVal = document.getElementById('cert-name-input').value.trim();
+            if (!nameVal) {
+                document.getElementById('cert-recipient-display').textContent = t.certDefaultRecipient;
+            }
+
+            // Re-render dynamic sections in selected language
+            filterExplorer(currentExplorerTab);
+            renderQuickPrompts();
+            resetChatWithWelcome();
+            renderQuizState();
+            lucide.createIcons();
+        }
+
+        // ==========================================
+        // 4. EXPLORER RENDERER
+        // ==========================================
+        function filterExplorer(category) {
+            currentExplorerTab = category;
+
+            // Update active tab styling
+            document.querySelectorAll('.explorer-tab').forEach(btn => {
+                if (btn.dataset.tab === category) {
+                    btn.classList.add('tab-active');
+                    btn.classList.remove('text-slate-500');
+                } else {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('text-slate-500');
+                }
+            });
+
+            const data = explorerData[category][currentLang];
+            const t = uiStrings[currentLang];
+            const container = document.getElementById('explorer-content');
+            const bridgeText = document.getElementById('bridge-text');
+
+            container.innerHTML = `
+                <!-- Egypt Card -->
+                <div class="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between space-y-5 border-t-4 border-t-najd-500">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-4xl">${data.egypt.flag}</span>
+                            <span class="px-3 py-1 rounded-full bg-najd-100 text-najd-600 text-xs font-semibold">${data.egypt.highlight}</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-nile-900">${data.egypt.title}</h3>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-najd-600">${data.egypt.subtitle}</p>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">${data.egypt.description}</p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400 font-medium">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-najd-500"></i>
+                        <span>${t.countryEgypt}</span>
+                    </div>
+                </div>
+
+                <!-- Saudi Card -->
+                <div class="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between space-y-5 border-t-4 border-t-oasis-600">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-4xl">${data.saudi.flag}</span>
+                            <span class="px-3 py-1 rounded-full bg-emerald-50 text-oasis-700 text-xs font-semibold">${data.saudi.highlight}</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-nile-900">${data.saudi.title}</h3>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-oasis-600">${data.saudi.subtitle}</p>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed pt-1">${data.saudi.description}</p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400 font-medium">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-oasis-600"></i>
+                        <span>${t.countrySaudi}</span>
+                    </div>
+                </div>
+            `;
+
+            bridgeText.textContent = data.bridge;
+            lucide.createIcons();
+        }
+
+        // ==========================================
+        // 5. GEMINI AI CULTURAL COMPANION (BILINGUAL)
+        // ==========================================
+        const apiKey = ""; // Canvas runtime automatically injects API key
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        const quickPromptsMap = {
+            en: [
+                {
+                    label: "✨ Poem: Student in Riyadh",
+                    prompt: "Write a short inspiring poem in English about an Egyptian student living in Riyadh who loves both Egypt and Saudi Arabia."
+                },
+                {
+                    label: "🏛️ Historical Ties",
+                    prompt: "What are 3 fascinating historical connections between ancient Egypt and the Arabian Peninsula?"
+                },
+                {
+                    label: "☕ Hospitality & Food",
+                    prompt: "Compare Egyptian Koshary & Mint Tea with Saudi Kabsa & Qahwa as symbols of hospitality!"
+                }
+            ],
+            ar: [
+                {
+                    label: "✨ قصيدة: طالب مصري بالرياض",
+                    prompt: "اكتب قصيدة قصيرة وملهمة باللغة العربية عن طالب مصري يعيش في الرياض ويعتز بحبه لمصر والمملكة العربية السعودية."
+                },
+                {
+                    label: "🏛️ روابط تاريخية",
+                    prompt: "اذكر 3 روابط تاريخية وحضارية مميزة تجمع بين مصر وشبه الجزيرة العربية عبر العصور."
+                },
+                {
+                    label: "☕ الكرم والضيافة",
+                    prompt: "قارن بأسلوب جميل بين الضيافة المصرية (الشاي بالنعناع والكشري) والضيافة السعودية (القهوة السعودية والكبسة) كرموز للكرم!"
+                }
+            ]
+        };
+
+        function renderQuickPrompts() {
+            const bar = document.getElementById('quick-prompts-bar');
+            const t = uiStrings[currentLang];
+            const items = quickPromptsMap[currentLang];
+
+            bar.innerHTML = `<span class="text-xs font-semibold text-slate-400 shrink-0">${t.tryAskingLabel}</span>` +
+                items.map((item, index) => {
+                    const colors = [
+                        "bg-najd-100 hover:bg-najd-400/30 text-nile-900",
+                        "bg-nile-50 hover:bg-nile-100 text-nile-800",
+                        "bg-emerald-50 hover:bg-emerald-100 text-oasis-700"
+                    ];
+                    return `<button type="button" onclick="triggerQuickPrompt(${index})" class="shrink-0 text-xs px-3 py-1.5 rounded-full ${colors[index % 3]} font-medium transition-colors cursor-pointer">${item.label}</button>`;
+                }).join('');
+        }
+
+        function triggerQuickPrompt(index) {
+            const promptText = quickPromptsMap[currentLang][index].prompt;
+            const input = document.getElementById('chat-input');
+            input.value = promptText;
+            document.getElementById('chat-form').dispatchEvent(new Event('submit'));
+        }
+
+        async function fetchGeminiWithBackoff(userPrompt, retries = 3, delay = 1000) {
+            const langInstruction = currentLang === 'ar'
+                ? "Respond exclusively in eloquent, warm Arabic."
+                : "Respond exclusively in eloquent, warm English.";
+
+            const systemInstruction = `You are the "Nile & Najd AI Ambassador", an inspiring, warm, and knowledgeable cultural guide built for the "Egyptian Creator" (المبدع المصري) Season 2 competition (2026/2027) in Riyadh, Saudi Arabia.
+Your mission is to celebrate and strengthen the bond between Egypt and Saudi Arabia from the perspective of an Egyptian student living in Saudi Arabia.
+Keep responses engaging, well-structured, concise (around 100-180 words), respectful, and uplifting. ${langInstruction}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                }
+            };
+
+            for (let attempt = 0; attempt <= retries; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) return text;
+                    throw new Error("Empty AI response");
+                } catch (error) {
+                    if (attempt === retries) {
+                        return getFallbackAIResponse(userPrompt);
+                    }
+                    await new Promise(res => setTimeout(res, delay * Math.pow(2, attempt)));
+                }
+            }
+        }
+
+        function getFallbackAIResponse(prompt) {
+            const lower = prompt.toLowerCase();
+            if (currentLang === 'ar') {
+                if (lower.includes('قصيدة') || lower.includes('شعر')) {
+                    return `من ضفافِ النيلِ جئتُ حاملاً شوقَ السنينْ\nنحو أرضِ المجدِ نجدٍ، موطنِ القلبِ الأمينْ\nمصرُ في روحي شموخٌ، والرياضُ لي وطنْ\nأخوةٌ تبقى وتسمو رغمَ ترحالِ الزمنْ 🇪🇬🤝🇸🇦`;
+                }
+                if (lower.includes('ضيافة') || lower.includes('قهوة') || lower.includes('كشري')) {
+                    return `تجمع الضيافة المصرية والسعودية أسمى معاني الكرم العربي! في مصر، يُستقبل الضيف بابتسامة دافئة وعبارة «البيت بيتك» مع الشاي بالنعناع، وفي السعودية تُدار دلة القهوة السعودية المبهرة بالهيل مع التمر الفاخر رمزاً للشهامة والترحيب. ☕🌴`;
+                }
+                return `ترتبط مصر والمملكة العربية السعودية بعلاقات تاريخية وحضارية ضاربة في الجذور، تمتد عبر البحر الأحمر وطرق التجارة والعلم، وتتجلى اليوم في أبهى صورها من خلال الطلاب المصريين المبدعين في مدارس وجامعات المملكة. 🇪🇬✨🇸🇦`;
+            } else {
+                if (lower.includes('poem')) {
+                    return `From the banks of the Nile to the heart of Riyadh,\nTwo nations united in brotherhood and pride.\nWith the Pyramids' wisdom and Najd's noble grace,\nAn Egyptian student finds home in this place.\nTogether we dream, innovate, and shine—\nEgypt and Saudi Arabia, forever intertwined! 🇪🇬🤝🇸🇦`;
+                }
+                if (lower.includes('koshary') || lower.includes('hospitality')) {
+                    return `Food and hospitality are the soul of both cultures! In Egypt, sharing Koshary and sweet mint tea comes with genuine warmth ("El-Beit Beitak"). In Saudi Arabia, aromatic Kabsa and cardamom-infused Saudi Qahwa served with dates symbolize timeless generosity ("Karam"). ☕🍽️`;
+                }
+                return `Egypt and Saudi Arabia share centuries of deep historical, cultural, and educational ties—from ancient trade routes across the Red Sea to generations of Egyptian educators and students thriving in the Kingdom today. 🇪🇬✨🇸🇦`;
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const chatBox = document.getElementById('chat-messages');
+            const wrapper = document.createElement('div');
+
+            if (sender === 'user') {
+                wrapper.className = "flex items-start justify-end gap-3";
+                wrapper.innerHTML = `
+                    <div class="bg-nile-800 text-white rounded-2xl rounded-te-none p-4 text-sm shadow-sm max-w-xl leading-relaxed">
+                        ${escapeHtml(text)}
+                    </div>
+                `;
+            } else {
+                const formatted = escapeHtml(text)
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\n/g, '<br>');
+                wrapper.className = "flex items-start gap-3";
+                wrapper.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-nile-800 text-najd-400 flex items-center justify-center shrink-0 mt-1">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-ts-none p-4 text-sm text-slate-700 shadow-sm max-w-2xl leading-relaxed">
+                        ${formatted}
+                    </div>
+                `;
+            }
+
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            lucide.createIcons();
+        }
+
+        function showTypingIndicator() {
+            const chatBox = document.getElementById('chat-messages');
+            const t = uiStrings[currentLang];
+            const indicator = document.createElement('div');
+            indicator.id = 'typing-indicator';
+            indicator.className = "flex items-start gap-3";
+            indicator.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-nile-800 text-najd-400 flex items-center justify-center shrink-0 mt-1">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl rounded-ts-none px-4 py-3 text-xs text-slate-500 shadow-sm flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-najd-500 animate-bounce"></span>
+                    <span class="w-2 h-2 rounded-full bg-najd-500 animate-bounce" style="animation-delay: 0.15s"></span>
+                    <span class="w-2 h-2 rounded-full bg-najd-500 animate-bounce" style="animation-delay: 0.3s"></span>
+                    <span class="mx-1">${t.aiTyping}</span>
+                </div>
+            `;
+            chatBox.appendChild(indicator);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            lucide.createIcons();
+        }
+
+        function removeTypingIndicator() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
+        }
+
+        async function handleChatSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('chat-input');
+            const submitBtn = document.getElementById('chat-submit-btn');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            input.value = '';
+            input.disabled = true;
+            submitBtn.disabled = true;
+
+            appendMessage('user', prompt);
+            showTypingIndicator();
+
+            const reply = await fetchGeminiWithBackoff(prompt);
+            removeTypingIndicator();
+            appendMessage('ai', reply);
+
+            input.disabled = false;
+            submitBtn.disabled = false;
+            input.focus();
+        }
+
+        function resetChatWithWelcome() {
+            const chatBox = document.getElementById('chat-messages');
+            const t = uiStrings[currentLang];
+            chatBox.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-nile-800 text-najd-400 flex items-center justify-center shrink-0 mt-1">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-ts-none p-4 text-sm text-slate-700 shadow-sm max-w-2xl leading-relaxed">
+                        ${t.aiWelcome}
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function clearChat() {
+            const chatBox = document.getElementById('chat-messages');
+            const t = uiStrings[currentLang];
+            chatBox.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-nile-800 text-najd-400 flex items-center justify-center shrink-0 mt-1">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-ts-none p-4 text-sm text-slate-700 shadow-sm max-w-2xl leading-relaxed">
+                        ${t.aiResetMsg}
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ==========================================
+        // 6. GAMIFIED QUIZ & CERTIFICATE DOWNLOAD
+        // ==========================================
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+        let quizCompleted = false;
+
+        function renderQuizState() {
+            if (quizCompleted) {
+                showQuizResult();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const questions = quizData[currentLang];
+            const q = questions[currentQuestionIndex];
+            const t = uiStrings[currentLang];
+
+            document.getElementById('quiz-progress-text').textContent = currentLang === 'ar'
+                ? `السؤال ${currentQuestionIndex + 1} من ${questions.length}`
+                : `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            document.getElementById('quiz-score-text').textContent = currentLang === 'ar'
+                ? `النقاط: ${score}`
+                : `Score: ${score}`;
+
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            document.getElementById('quiz-question').textContent = q.question;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "quiz-opt-btn w-full text-start p-4 rounded-xl border border-slate-200 hover:border-nile-600 hover:bg-nile-50/50 transition-all text-sm sm:text-base font-medium text-slate-700 flex items-center justify-between cursor-pointer";
+                btn.innerHTML = `<span>${opt}</span>`;
+                btn.onclick = () => selectAnswer(idx);
+                optionsContainer.appendChild(btn);
+            });
+
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.add('hidden');
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+            document.getElementById('quiz-next-label').textContent =
+                currentQuestionIndex === questions.length - 1 ? t.quizFinish : t.quizNext;
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const questions = quizData[currentLang];
+            const q = questions[currentQuestionIndex];
+            const t = uiStrings[currentLang];
+            const buttons = document.querySelectorAll('.quiz-opt-btn');
+            const feedback = document.getElementById('quiz-feedback');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.correct) {
+                    btn.classList.remove('border-slate-200', 'hover:border-nile-600');
+                    btn.classList.add('bg-emerald-50', 'border-oasis-600', 'text-oasis-700', 'font-semibold');
+                    btn.innerHTML += `<i data-lucide="check-circle" class="w-5 h-5 text-oasis-600 shrink-0"></i>`;
+                } else if (idx === selectedIndex && idx !== q.correct) {
+                    btn.classList.remove('border-slate-200');
+                    btn.classList.add('bg-rose-50', 'border-rose-400', 'text-rose-700');
+                    btn.innerHTML += `<i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0"></i>`;
+                }
+            });
+
+            if (selectedIndex === q.correct) {
+                score++;
+                document.getElementById('quiz-score-text').textContent = currentLang === 'ar'
+                    ? `النقاط: ${score}`
+                    : `Score: ${score}`;
+                feedback.className = "p-4 rounded-xl text-sm leading-relaxed bg-emerald-50 text-oasis-700 border border-emerald-200";
+                feedback.innerHTML = currentLang === 'ar'
+                    ? `<strong>إجابة صحيحة!</strong> ${q.explanation}`
+                    : `<strong>Spot on!</strong> ${q.explanation}`;
+            } else {
+                feedback.className = "p-4 rounded-xl text-sm leading-relaxed bg-amber-50 text-amber-900 border border-amber-200";
+                feedback.innerHTML = currentLang === 'ar'
+                    ? `<strong>معلومة مفيدة!</strong> ${q.explanation}`
+                    : `<strong>Good try!</strong> ${q.explanation}`;
+            }
+
+            feedback.classList.remove('hidden');
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.classList.remove('hidden');
+            document.getElementById('quiz-next-label').textContent =
+                currentQuestionIndex === questions.length - 1 ? t.quizFinish : t.quizNext;
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            const questions = quizData[currentLang];
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                quizCompleted = true;
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const questions = quizData[currentLang];
+            document.getElementById('quiz-header').classList.add('hidden');
+            document.getElementById('quiz-body').classList.add('hidden');
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+
+            document.getElementById('final-score-summary').textContent = currentLang === 'ar'
+                ? `لقد حققت ${score} من ${questions.length} في تحدي التراث المصري السعودي!`
+                : `You scored ${score} out of ${questions.length} on the Egypt–Saudi Cultural Heritage Challenge!`;
+
+            lucide.createIcons();
+        }
+
+        function updateCertificateName(val) {
+            const t = uiStrings[currentLang];
+            const display = document.getElementById('cert-recipient-display');
+            display.textContent = val.trim() ? val.trim() : t.certDefaultRecipient;
+        }
+
+        function downloadCertificate() {
+            // Render a crisp PNG certificate using HTML5 Canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = 1000;
+            canvas.height = 620;
+            const ctx = canvas.getContext('2d');
+
+            // Background Gradient
+            const grad = ctx.createLinearGradient(0, 0, 1000, 620);
+            grad.addColorStop(0, '#051924');
+            grad.addColorStop(0.5, '#0d3b54');
+            grad.addColorStop(1, '#11664a');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 1000, 620);
+
+            // Gold Border
+            ctx.strokeStyle = '#d4a359';
+            ctx.lineWidth = 8;
+            ctx.strokeRect(28, 28, 944, 564);
+
+            ctx.strokeStyle = 'rgba(212, 163, 89, 0.4)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(42, 42, 916, 536);
+
+            // Text Alignment
+            ctx.textAlign = 'center';
+
+            // Top Org Header
+            ctx.fillStyle = '#e4c28b';
+            ctx.font = 'bold 20px sans-serif';
+            ctx.fillText('EGYPTIAN CREATOR • SEASON 2 (2026/2027) | مسابقة المبدع المصري', 500, 110);
+
+            // Main Title
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 42px serif';
+            ctx.fillText('Nile & Najd Youth Bridge Award', 500, 185);
+
+            ctx.fillStyle = '#d4a359';
+            ctx.font = 'bold 28px sans-serif';
+            ctx.fillText('وسام جسر الشباب بين النيل ونجد', 500, 232);
+
+            // Recipient Box
+            const recipient = document.getElementById('cert-recipient-display').textContent;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.fillRect(220, 275, 560, 75);
+            ctx.strokeStyle = '#d4a359';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(220, 275, 560, 75);
+
+            ctx.fillStyle = '#f5eedc';
+            ctx.font = 'bold 32px sans-serif';
+            ctx.fillText(recipient, 500, 323);
+
+            // Citation Text
+            ctx.fillStyle = '#e2e8f0';
+            ctx.font = '20px sans-serif';
+            ctx.fillText('Celebrating the enduring brotherhood & shared civilization of Egypt & Saudi Arabia', 500, 415);
+            ctx.fillText('تقديراً للاحتفاء بأواصر الأخوة والحضارة المشتركة بين مصر والمملكة العربية السعودية', 500, 452);
+
+            // Footer Signature
+            ctx.fillStyle = '#d4a359';
+            ctx.font = 'bold 18px sans-serif';
+            ctx.fillText('Programming & AI Track • Riyadh, Kingdom of Saudi Arabia', 500, 530);
+
+            // Trigger Download
+            const link = document.createElement('a');
+            link.download = 'Nile-and-Najd-Award.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            quizCompleted = false;
+            document.getElementById('quiz-header').classList.remove('hidden');
+            document.getElementById('quiz-body').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuestion();
+        }
+
+        // ==========================================
+        // 7. MODAL CONTROLS & INITIALIZATION
+        // ==========================================
+        function openAboutModal() {
+            document.getElementById('about-modal').classList.remove('hidden');
+        }
+
+        function closeAboutModal() {
+            document.getElementById('about-modal').classList.add('hidden');
+        }
+
+        // Initialize app on load
+        applyLanguage('en');
+    </script>
+</body>
+</html>
